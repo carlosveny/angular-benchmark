@@ -1,14 +1,14 @@
 {
   "name": "benchmark",
   "version": "1.0.0",
-  "description": "",
+  "description": "Benchmark that clones, installs and serves an Angular Project",
   "main": "index.js",
   "scripts": {
     "benchmark": "npm run clean && npm run start-time && npm run clone && npm run installation && npm run serve && npm run end-time && npm run results",
-    "clean": "cd src && rimraf results.json && node exec.js rimraf repoName",
+    "clean": "cd src && rimraf results.json && rimraf --glob \"project-to-test/{*,.*}\"",
     "start-time": "cd src && node introduction.js && node setTime.js \"TOTAL TIME\"",
-    "clone": "cd src && node setTime.js \"git clone\" && node exec.js \"git clone\" repoUrl && node setTime.js \"git clone\"",
-    "installation": "cd src && node setTime.js \"npm install\" && node exec.js cd repoName \"&& npm i\" && node setTime.js \"npm install\"",
+    "clone": "cd src && node setTime.js \"git clone\" && node exec.js \"git clone\" repoUrl project-to-test && node setTime.js \"git clone\"",
+    "installation": "cd src && node setTime.js \"npm install\" && cd project-to-test && npm i && cd .. && node setTime.js \"npm install\"",
     "serve": "cd src && node setTime.js \"npm run dev:ssr\" && node startApplication.js && node setTime.js \"npm run dev:ssr\"",
     "end-time": "cd src && node setTime.js \"TOTAL TIME\"",
     "results": "cd src && node showResults.js"
