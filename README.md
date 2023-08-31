@@ -1,6 +1,16 @@
 # angular-benchmark
 Scripts para probar el rendimiento de un ordenador durante el despliegue de un proyecto Angular en local.
 
+### Entorno
+Node
+```
+v.14.18.1
+```
+
+Npm
+```
+v.6.14.15
+```
 
 ### Uso
 1. Instalar las dependencias necesarias `npm i`.

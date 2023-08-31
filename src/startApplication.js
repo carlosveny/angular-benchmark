@@ -4,9 +4,9 @@ const treeKill = require('tree-kill')
 const cmd = process.spawn('cd project-to-test && npm run dev:ssr', { shell: true })
 
 cmd.stdout.on('data', (output) => {
-  if (output.toString().includes('localhost:4200')) {
+  if (output.toString().includes('localhost:')) {
     cmd.stdin.pause()
-    treeKill(cmd.pid, 'SIGTERM', function (err) {
+    treeKill(cmd.pid, 'SIGTERM', (err) => {
       if (err) {
         console.error('Error killing process tree:', err)
       } else {
